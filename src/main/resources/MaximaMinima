@@ -1,0 +1,51 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+
+class Result {
+
+    /*
+     * Complete the 'maxMin' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER_ARRAY arr
+     *  2. INTEGER k
+     */
+
+    public static int maxMin(List<Integer> arr, int k) {
+    // Write your code here
+    System.out.println("k"+k);
+    int minima = 0;
+    int maxima = k;
+    List<Integer> minimumElementsList = new ArrayList<>();
+        for(int i=0;i<arr.size();i++){
+            List<Integer> intermidiateList = new ArrayList<>();
+            for(int j=minima;j<maxima;j++){
+                intermidiateList.add(arr.get(j));
+                System.out.println("minima"+minima);
+            }
+            //minimumelement
+            intermidiateList.forEach(f->System.out.println("list elements"+f));
+            Integer min = intermidiateList.stream().mapToInt(v->v).min().orElseThrow(NoSuchElementException::new);
+            minimumElementsList.add(min);
+            minima++;
+            maxima++;
+        }
+        Integer max = minimumElementsList.stream().mapToInt(v->v).max().orElseThrow(NoSuchElementException::new);
+        return max.intValue();
+    }
+
+}
+
+public class Solution {
